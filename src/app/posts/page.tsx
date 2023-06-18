@@ -12,15 +12,15 @@ const getusers = async () => {
 };
 const getDogs = async () => {
   // so that it will not store the data in the cache mmemory, it will load every time page is refreshing
-  //   const res = await fetch("https://dog.ceo/api/breeds/image/random", {
-  //     cache: "no-store",
-  //   });
-  // another way is revalidate
   const res = await fetch("https://dog.ceo/api/breeds/image/random", {
-    next: {
-      revalidate: 3, //after 3 seconds this is going to fetch again
-    },
+    cache: "no-store",
   });
+  // another way is revalidate
+  //   const res = await fetch("https://dog.ceo/api/breeds/image/random", {
+  //     next: {
+  //       revalidate: 3, //after 3 seconds this is going to fetch again
+  //     },
+  //   });
   return res.json();
 };
 const Posts = async () => {
